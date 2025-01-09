@@ -57,4 +57,43 @@ const add: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browse, read, add };
+// The E of BREAD - Edit (Update) operation
+const edit: RequestHandler = async (req, res, next) => {
+  try {
+    const itemId = Number(req.params.id);
+    const updatedItem = {
+      id: itemId,
+      title: req.body.title,
+      user_id: req.body.user_id,
+    };
+
+    const success = await itemRepository.update(updatedItem);
+
+    if (success) {
+      res.sendStatus(204); // HTTP 204: No Content
+    } else {
+      res.sendStatus(404); // HTTP 404: Not Found
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
+// The D of BREAD - Delete operation
+const deleteItem: RequestHandler = async (req, res, next) => {
+  try {
+    const itemId = Number(req.params.id);
+
+    const success = await itemRepository.delete(itemId);
+
+    if (success) {
+      res.sendStatus(204); // HTTP 204: No Content
+    } else {
+      res.sendStatus(404); // HTTP 404: Not Found
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
+export default { browse, read, add, edit, delete: deleteItem };

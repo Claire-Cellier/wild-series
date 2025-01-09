@@ -46,16 +46,30 @@ class ItemRepository {
   // The U of CRUD - Update operation
   // TODO: Implement the update operation to modify an existing item
 
-  // async update(item: Item) {
-  //   ...
-  // }
+  async update(item: Item) {
+    // Execute the SQL UPDATE query to modify an existing item
+    const [result] = await databaseClient.query<Result>(
+      "update item set title = ?, user_id = ? where id = ?",
+      [item.title, item.user_id, item.id],
+    );
+
+    // Return a boolean indicating if the update was successful
+    return result.affectedRows > 0;
+  }
 
   // The D of CRUD - Delete operation
   // TODO: Implement the delete operation to remove an item by its ID
 
-  // async delete(id: number) {
-  //   ...
-  // }
+  async delete(id: number) {
+    // Execute the SQL DELETE query to remove an item by its ID
+    const [result] = await databaseClient.query<Result>(
+      "delete from item where id = ?",
+      [id],
+    );
+
+    // Return a boolean indicating if the delete was successful
+    return result.affectedRows > 0;
+  }
 }
 
 export default new ItemRepository();
