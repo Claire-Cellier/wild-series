@@ -2,19 +2,18 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  color: black;
 }
 
 body {
   font-family: "Lato", sans-serif;
   font-size: 16px;
   line-height: 1.7;
-  color: #eee;
   margin: 0;
 }
 
 #root {
   height: 100vh;
-  background-image: url("./assets/images/background.webp");
   background-size: cover;
   background-position: top;
   display: grid;
@@ -36,6 +35,7 @@ header {
 .navbar {
   grid-column: -2 / -1;
   grid-row: 1;
+  margin-bottom: 2rem;
 }
 
 .navbar ul {
@@ -47,7 +47,6 @@ header {
 
 .navbar a {
   text-decoration: none;
-  color: #eee;
   display: flex;
   gap: 0.5rem;
   align-items: center;
@@ -61,7 +60,8 @@ header {
   grid-column: 1 / -1;
   grid-row: 1;
   align-self: center;
-  text-align: center;
+  justify-self: center;
+  margin: 2rem;
 }
 
 .block-primary {

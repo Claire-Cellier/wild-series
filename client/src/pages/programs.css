@@ -9,11 +9,11 @@ body {
   line-height: 1.7;
   color: #eee;
   margin: 0;
-  background-color: black;
+  background-color: white;
 }
 
 .program {
-  background-color: black;
+  background-color: white;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -39,4 +39,8 @@ body {
 p,
 h6 {
   margin: 1rem;
+}
+
+ul {
+  list-style-type:none;
 }
